@@ -73,7 +73,7 @@ STAR_PREMIUM_PLANS = {
 # ============================
 # MongoDB Configuration (PostgreSQL URI used as Database URI to avoid errors)
 # ============================
-DATABASE_URI = environ.get('DATABASE_URI', "postgresql://movie_search_db_icdn_user:WR85z0QEg1sxQunFEeFkQP2dBp33AfQk@dpg-dbq4kh2jnfac73f3iivg-a/movie_search_db_icdn")  # Database URI
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://hardikmakawala:Dhruv1289@cluster0.jegdzih.mongodb.net/")  # Database URI
 DATABASE_NAME = environ.get('DATABASE_NAME', "movie_search_db_icdn") # Database name 
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'royal_files') # Collection name 
 

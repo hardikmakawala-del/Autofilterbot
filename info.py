@@ -20,7 +20,7 @@ def is_enabled(value, default):
 SESSION = environ.get('SESSION', 'royal_search')   # Session name for the bot
 API_ID = int(environ.get('API_ID', '29181523')) # API ID from my.telegram.org
 API_HASH = environ.get('API_HASH', 'ba9b8c523e7a8714785bb5480ace5089')  # API Hash from my.telegram.org
-BOT_TOKEN = environ.get('BOT_TOKEN', "9183685956:AAG3G1qk7ihhnVUh8rirGIb-ay9Nx0fPp2E")    # Bot token from @BotFather
+BOT_TOKEN = environ.get('BOT_TOKEN', "9094525892:AAEK_DGomyfOFdZlDJnM2UUYHzmojvLXdMg")    # Bot token from @BotFather
 
 # ============================
 # Bot Settings Configuration
@@ -71,15 +71,16 @@ STAR_PREMIUM_PLANS = {
 }  # Premium plans with their respective durations in days
 
 # ============================
-# MongoDB Configuration
+# MongoDB Configuration (PostgreSQL URI used as Database URI to avoid errors)
 # ============================
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://hardikmakawala:<db_password>@cluster0.jegdzih.mongodb.net/")  # MongoDB URI for the database
-DATABASE_NAME = environ.get('DATABASE_NAME', "Khushi") # Database name (default: cluster)
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'royal_files') # Collection name (default: dreamcinezone_files)
+DATABASE_URI = environ.get('DATABASE_URI', "postgresql://movie_search_db_icdn_user:WR85z0QEg1sxQunFEeFkQP2dBp33AfQk@dpg-dbq4kh2jnfac73f3iivg-a/movie_search_db_icdn")  # Database URI
+DATABASE_NAME = environ.get('DATABASE_NAME', "movie_search_db_icdn") # Database name 
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'royal_files') # Collection name 
 
 # If MULTIPLE_DB Is True Then Fill DATABASE_URI2 Value Else You Will Get Error.
 MULTIPLE_DB = is_enabled(os.environ.get('MULTIPLE_DB', "False"), False) # Type True For Turn On MULTIPLE DB FUNTION 
 DATABASE_URI2 = environ.get('DATABASE_URI2', "")  # MongoDB URI for the second database (if MULTIPLE_DB is True)
+
 # ============================
 # Movie Notification & Update Settings
 # ============================
@@ -162,11 +163,9 @@ BUTTON_MODE = is_enabled((environ.get('BUTTON_MODE', "False")), False) # pm & Gr
 STREAM_MODE = bool(environ.get('STREAM_MODE', False)) # Set Stream mode True or False
 PREMIUM_STREAM_MODE = bool(environ.get('PREMIUM_STREAM_MODE', False)) # Set Stream mode True or False only for premium users
 
-
 # ============================
 # Bot Configuration
 # ============================
-
 AUTH_REQ_CHANNELS = [int(ch) for ch in auth_req_channels.split() if ch and id_pattern.match(ch)] 
 AUTH_CHANNELS = [int(ch) for ch in auth_channels.split() if ch and id_pattern.match(ch)]
 REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_channel) else None
@@ -196,13 +195,11 @@ BAD_WORDS = {
     "villa",
     "tg",
     "original"
-} # Set of bad words to filter out
-   
+} 
 
 # ============================
 # Server & Web Configuration
 # ============================
-
 NO_PORT = bool(environ.get('NO_PORT', False))
 APP_NAME = None
 if 'DYNO' in environ:
@@ -218,7 +215,7 @@ WORKERS = int(environ.get('WORKERS', '4'))
 SESSION_NAME = str(environ.get('SESSION_NAME', 'dreamXBotz'))
 MULTI_CLIENT = False
 name = str(environ.get('name', 'DREAMXBOTZ'))
-PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
+PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  
 if 'DYNO' in environ:
     ON_HEROKU = True
     APP_NAME = str(getenv('APP_NAME'))
@@ -245,15 +242,15 @@ Bot_cmds = {
     "settings": "ᴄʜᴀɴɢᴇ sᴇᴛᴛɪɴɢs",
     "id": "ɢᴇᴛ ɪᴅ ᴛᴇʟᴇɢʀᴀᴍ ",
     "info": "Gᴇᴛ Usᴇʀ ɪɴғᴏ ",
-    "del_msg": "ʀᴇᴍᴏᴠᴇ ғɪʟᴇ ɴᴀᴍᴇ ᴄᴏʟʟᴇᴄᴛɪᴏɴ ɴᴏтɪғɪᴄᴀᴛɪᴏɴ...",
+    "del_msg": "ʀᴇᴍᴏᴠᴇ ғɪʟᴇ ɴᴀᴍᴇ ᴄᴏʟʟᴇᴄᴛɪᴏɴ ɴᴏtɪғɪᴄᴀᴛɪᴏɴ...",
     "movie_update": "ᴏɴ ᴏғғ ᴀᴄᴄᴏʀᴅɪɴɢ ʏᴏᴜʀ ɴᴇᴇᴅᴇᴅ...",
     "pm_search": "ᴘᴍ sᴇᴀʀᴄʜ ᴏɴ ᴏғғ ᴀᴄᴄᴏʀᴅɪɴɢ ʏᴏᴜʀ ɴᴇᴇᴅᴇᴅ...",
     "trendlist": "Gᴇᴛ Tᴏᴘ Tʀᴀɴᴅɪɴɢ Sᴇᴀʀᴄʜ Lɪsᴛ",
     "broadcast": "ʙʀᴏᴀᴅᴄᴀꜱᴛ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴀʟʟ ᴜꜱᴇʀꜱ.",
-    "grp_broadcast": "ʙʀᴏᴀᴅᴄᴀsᴛ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴄᴏɴɴᴇᴄᴛᴇᴅ ɢʀᴏᴜᴘs",
+    "grp_broadcast": "ʙʀᴏᴀᴅᴄᴀsᴛ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ 𝚌𝚘𝚗𝚗𝚎𝚌𝚝𝚎𝚍 𝚐𝚛𝚘𝚞𝚙𝚜",
     "send": "ꜱᴇɴᴅ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴀ ᴘᴀʀᴛɪᴄᴜʟᴀʀ ᴜꜱᴇʀ.",
     "add_premium": "ᴀᴅᴅ ᴀɴʏ ᴜꜱᴇʀ ᴛᴏ ᴘʀᴇᴍɪᴜᴍ.",
-    "remove_premium": "ʀᴇᴍᴏᴠᴇ ᴀɴʏ ᴜꜱᴇʀ ꜰʀᴏᴍ ᴘʀᴇᴍɪᴜᴍ.",
+    "remove_premium": "ʀᴇᴍᴏᴠᴇ ᴀɴʏ ᴜꜱᴇʀ ꜰʀᴏᴍ ᴘʀᴇᴍɪᴜﾑ.",
     "premium_users": "ɢᴇᴛ ʟɪꜱᴛ ᴏꜰ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ.",
     "restart": "ʀᴇꜱᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ.",
     "group_cmd": "ɢʀᴏᴜᴘ ᴄᴏᴍᴍᴀɴᴅ ʟɪsᴛ",
@@ -262,8 +259,6 @@ Bot_cmds = {
     "trial_reset": "User Trial Reset"
 }
 
-
-#Don't Change Anything Here
 if MULTIPLE_DB == False:
     DATABASE_URI = DATABASE_URI
     DATABASE_URI2 = DATABASE_URI
